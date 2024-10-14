@@ -1,0 +1,136 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--login-background);
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+
+.login-box {
+  background-color: var(--login-box-background);
+  padding: 40px;
+  box-shadow: var(--login-box-shadow);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 30px;
+  font-size: clamp(1.5rem, 5vw, 28px);
+  color: var(--login-heading-color);
+  font-weight: 700;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--login-input-border);
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: var(--login-input-background);
+  color: var(--login-input-color);
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: var(--login-input-focus-border);
+  box-shadow: var(--login-input-focus-shadow);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--login-toggle-color);
+}
+
+.login-box button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--login-button-background);
+  color: var(--login-button-color);
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-box button[type="submit"]:hover {
+  background-color: var(--login-button-hover-background);
+}
+
+.login-box button[type="submit"]:disabled {
+  background-color: var(--login-button-disabled-background);
+  cursor: not-allowed;
+}
+
+:root {
+  --login-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --login-box-background: rgba(255, 255, 255, 0.9);
+  --login-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  --login-heading-color: #333333;
+  --login-input-border: #e1e1e1;
+  --login-input-background: #ffffff;
+  --login-input-color: #333333;
+  --login-input-focus-border: #667eea;
+  --login-input-focus-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+  --login-toggle-color: #666666;
+  --login-button-background: #667eea;
+  --login-button-color: #ffffff;
+  --login-button-hover-background: #5a67d8;
+  --login-button-disabled-background: #a0aec0;
+}
+
+.dark-mode {
+  --login-background: linear-gradient(135deg, #2a3f5f 0%, #351f50 100%);
+  --login-box-background: rgba(30, 30, 30, 0.9);
+  --login-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  --login-heading-color: #ffffff;
+  --login-input-border: #444444;
+  --login-input-background: #2c2c2c;
+  --login-input-color: #ffffff;
+  --login-input-focus-border: #64b5f6;
+  --login-input-focus-shadow: 0 0 0 3px rgba(100, 181, 246, 0.3);
+  --login-toggle-color: #b0b0b0;
+  --login-button-background: #64b5f6;
+  --login-button-color: #ffffff;
+
+  --login-button-hover-background: #4a8ec8;
+  --login-button-disabled-background: #4a5568;
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 30px;
+  }
+
+  .login-box input,
+  .login-box button[type="submit"] {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-box,
+  .login-box input,
+  .login-box button[type="submit"] {
+    transition: none;
+  }
+}

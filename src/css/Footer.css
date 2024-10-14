@@ -1,0 +1,119 @@
+.footer {
+  background-color: var(--footer-background);
+  color: var(--footer-text);
+  padding: 3rem 0 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--footer-heading);
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover,
+.footer-section ul li a:focus {
+  color: var(--footer-link-hover);
+  outline: none;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: var(--footer-social-icon);
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus {
+  color: var(--footer-social-icon-hover);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--footer-bottom-text);
+}
+
+:root {
+  --footer-background: #1e3c72;
+  --footer-text: #ffffff;
+  --footer-heading: #64b5f6;
+  --footer-link: #ffffff;
+  --footer-link-hover: #64b5f6;
+  --footer-social-icon: #ffffff;
+  --footer-social-icon-hover: #64b5f6;
+  --footer-bottom-text: #a0aec0;
+}
+
+.dark-mode {
+  --footer-background: #1e1e1e;
+  --footer-text: #ffffff;
+  --footer-heading: #64b5f6;
+  --footer-link: #b0b0b0;
+  --footer-link-hover: #ffffff;
+  --footer-social-icon: #b0b0b0;
+  --footer-social-icon-hover: #ffffff;
+  --footer-bottom-text: #a0aec0;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-social a:hover,
+  .footer-social a:focus {
+    transform: none;
+  }
+}

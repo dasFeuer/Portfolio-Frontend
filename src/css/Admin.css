@@ -1,0 +1,139 @@
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-right: 1rem;
+  background-color: var(--input-background);
+  color: var(--text-color);
+}
+
+.download-btn,
+.delete-btn {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-btn:hover,
+.delete-btn:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-2px);
+}
+
+.submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.submissions-table th,
+.submissions-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.submissions-table th {
+  background-color: var(--table-header-background);
+  font-weight: bold;
+}
+
+.submissions-table tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+.submissions-table tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+.loading,
+.error {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: var(--error-color);
+}
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #3498db;
+  --primary-color-dark: #2980b9;
+  --border-color: #e0e0e0;
+  --input-background: #ffffff;
+  --table-header-background: #f8f9fa;
+  --table-row-even: #f8f9fa;
+  --table-row-hover: #e9ecef;
+  --error-color: #e74c3c;
+}
+
+.dark-mode {
+  --background-color: #121212;
+  --text-color: #f5f5f5;
+  --primary-color: #64b5f6;
+  --primary-color-dark: #4a8ec8;
+  --border-color: #333333;
+  --input-background: #2c2c2c;
+  --table-header-background: #1e1e1e;
+  --table-row-even: #1a1a1a;
+  --table-row-hover: #2c2c2c;
+  --error-color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .admin-actions {
+    flex-direction: column;
+  }
+
+  .search-input {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .submissions-table {
+    font-size: 0.9rem;
+  }
+
+  .submissions-table th,
+  .submissions-table td {
+    padding: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .download-btn:hover,
+  .delete-btn:hover {
+    transform: none;
+  }
+}
