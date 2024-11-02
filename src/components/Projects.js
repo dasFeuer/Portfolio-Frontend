@@ -9,14 +9,14 @@ const ProjectCard = ({ project }) => {
   useEffect(() => {
     const checkServerStatus = async () => {
       try {
-        const response = await fetch('http://localhost:8080/serverhealth');
+        const response = await fetch(`${project.serverHealthEndpoint}`);
         setIsServerRunning(response.ok);
       } catch (error) {
         setIsServerRunning(false);
       }
     };
     checkServerStatus();
-  }, []);
+  }, [project.serverHealthEndpoint]);
 
   return (
     <div className="project-card">
@@ -60,7 +60,7 @@ const ProjectCard = ({ project }) => {
               </a>
             ) : (
               <p className="server-message">
-                <FaServer /> Todo server is not running. Please start the server.
+                <FaServer /> {project.name} server is not running. Please start the server.
               </p>
             )}
           </div>
@@ -81,37 +81,59 @@ const Projects = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const project = {
-    id: '1',
-    name: 'Todo App',
-    description: 'A powerful and intuitive todo list application built with React and Spring Boot. Stay organized and boost your productivity with this feature-rich task management tool.',
-    link: 'http://localhost:3000',
-    github: 'https://github.com/dasFeuer/Todo-WebApp.git',
-    liveLink: 'http://localhost:3000',
-    imageUrl: '/TodoApp.png',
-    features: [
-      'Create, edit, and delete tasks',
-      'Mark tasks as complete',
-      'Filter tasks by status',
-      'Responsive design for mobile and desktop',
-      'Data persistence with Spring Boot backend'
-    ]
-  };
+  const projects = [
+    {
+      id: '1',
+      name: 'Todo App',
+      description: 'A powerful and intuitive todo list application built with React and Spring Boot. Stay organized and boost your productivity with this feature-rich task management tool.',
+      link: 'http://localhost:3000',
+      github: 'https://github.com/dasFeuer/Todo-WebApp.git',
+      liveLink: 'http://localhost:3000',
+      imageUrl: '/TodoApp.png',
+      serverHealthEndpoint: 'http://localhost:8080/serverhealth',
+      features: [
+        'Create, edit, and delete tasks',
+        'Mark tasks as complete',
+        'Filter tasks by status',
+        'Responsive design for mobile and desktop',
+        'Data persistence with Spring Boot backend'
+      ]
+    },
+    {
+      id: '2',
+      name: 'Blog Web App',
+      description: 'A feature-rich blogging platform built with React and Spring Boot. Share your thoughts, engage with readers, and manage your content with ease.',
+      link: 'http://localhost:3000',
+      github: 'https://github.com/dasFeuer/Blog-Webapp.git',
+      liveLink: 'http://localhost:3000',
+      imageUrl: '/BlogApp.jpg',
+      serverHealthEndpoint: 'http://localhost:8081/api/health',
+      features: [
+        'Create, edit, and delete blog posts',
+        'User authentication and authorization',
+        'Comment system for reader engagement',
+        'Rich text editor for content creation',
+        'Responsive design for all devices',
+      ]
+    }
+  ];
 
   if (loading) {
     return (
       <div className="loader-container" aria-live="polite">
         <div className="loader" aria-hidden="true"></div>
-        <p>Loading amazing project...</p>
+        <p>Loading amazing projects...</p>
       </div>
     );
   }
 
   return (
     <div className="projects-container">
-      <h2 className="projects-title">My Showcase Project</h2>
+      <h2 className="projects-title">My Showcase Projects</h2>
       <div className="project-spotlight">
-        <ProjectCard project={project} />
+        {projects.map(project => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
       <div className="project-journey">
         <h3>My Project Journey</h3>
@@ -119,12 +141,12 @@ const Projects = () => {
           <div className="journey-item">
             <FaLightbulb className="journey-icon" />
             <h4>Idea Inception</h4>
-            <p>The spark that ignited this project</p>
+            <p>The spark that ignited these projects</p>
           </div>
           <div className="journey-item">
             <FaCode className="journey-icon" />
             <h4>Development Process</h4>
-            <p>Bringing the concept to life through code</p>
+            <p>Bringing concepts to life through code</p>
           </div>
           <div className="journey-item">
             <FaRocket className="journey-icon" />
